@@ -1,16 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.mvc_example;
 
-/**
- *
- * @author T-Gamer
- */
+import com.mycompany.mvc_example.Controller.ContadorController;
+import com.mycompany.mvc_example.Model.ContadorModel;
+import com.mycompany.mvc_example.View.ContadorView;
+
 public class MVC_Example {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        ContadorModel model = new ContadorModel();
+        ContadorView view = new ContadorView(model); // <- Passando o model, como exigido!
+        model.adicionarObserver(view);
+        ContadorController controller = new ContadorController(model);
+        view.setController(controller);
+        view.setVisible(true);
     }
 }
